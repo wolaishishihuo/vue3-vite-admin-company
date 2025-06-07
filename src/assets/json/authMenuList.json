@@ -1,0 +1,173 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "path": "/dashboard",
+      "name": "dashboard",
+      "component": "/dashboard/index",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "首页",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      }
+    },
+    {
+      "path": "/topic",
+      "name": "topic",
+      "component": "/topic/index",
+      "meta": {
+        "icon": "Comment",
+        "title": "讨论",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      },
+      "children": [
+        {
+          "path": "/topic/detail/:id",
+          "name": "topicDetail",
+          "component": "/topic/detail/index",
+          "meta": {
+            "title": "讨论详情",
+            "isLink": "",
+            "isHide": true,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "/assembly",
+      "name": "assembly",
+      "meta": {
+        "icon": "Menu",
+        "title": "常用组件",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      },
+      "children": [
+        {
+          "path": "/assembly/select",
+          "name": "assemblySelect",
+          "component": "/assembly/select/index",
+          "meta": {
+            "title": "Select组件",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        },
+        {
+          "path": "/assembly/modal",
+          "name": "assemblyModal",
+          "component": "/assembly/modal/index",
+          "meta": {
+            "title": "Dialog模态框",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "/profile",
+      "name": "profile",
+      "component": "/profile/index",
+      "meta": {
+        "icon": "User",
+        "title": "个人中心",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      }
+    },
+    {
+      "path": "/system",
+      "name": "system",
+      "component": "/system/index",
+      "meta": {
+        "icon": "Setting",
+        "title": "系统管理",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      },
+      "children": [
+        {
+          "path": "/system/user",
+          "name": "systemUser",
+          "component": "/system/user/index",
+          "meta": {
+            "title": "用户管理",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        },
+        {
+          "path": "/system/role",
+          "name": "systemRole",
+          "component": "/system/role/index",
+          "meta": {
+            "title": "角色管理",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        },
+        {
+          "path": "/system/systemLog",
+          "name": "systemLog",
+          "component": "/system/systemLog/index",
+          "meta": {
+            "title": "系统日志",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        }
+      ]
+    },
+    {
+      "path": "/about/index",
+      "name": "about",
+      "component": "/about/index",
+      "meta": {
+        "icon": "InfoFilled",
+        "title": "关于项目",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      }
+    }
+  ],
+  "message": "成功"
+}

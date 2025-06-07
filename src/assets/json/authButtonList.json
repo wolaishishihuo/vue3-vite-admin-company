@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "data": {
+    "dashboard": [
+      "todo:add",
+      "todo:edit",
+      "todo:delete"
+    ]
+  },
+  "msg": "成功"
+}

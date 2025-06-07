@@ -1,0 +1,132 @@
+$input-height: 44px;
+$border-radius: 8px;
+$transition-standard: all 0.3s ease-in-out;
+
+// 表单基础样式
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  .el-form-item {
+    margin: 0 2px 24px;
+  }
+
+  // 输入框样式增强
+  .el-input {
+    --el-input-height: #{$input-height};
+
+    :deep(.el-input__wrapper) {
+      padding: 0 16px;
+      background-color: var(--el-fill-color-blank);
+      border: 1px solid var(--el-border-color-lighter);
+      border-radius: $border-radius;
+      box-shadow: 0 0 0 0 transparent;
+      transition: $transition-standard;
+
+      &:hover {
+        border-color: var(--el-color-primary-light-3);
+      }
+
+      &.is-focus {
+        border-color: var(--el-color-primary);
+        box-shadow: 0 0 0 1px var(--el-color-primary-light-5) !important;
+      }
+
+      .el-input__inner {
+        font-size: 15px;
+
+        &::placeholder {
+          color: var(--el-text-color-placeholder);
+        }
+      }
+    }
+  }
+}
+
+// 登录类型切换
+.login-type-switch {
+  margin-bottom: 32px;
+}
+
+// 登录/注册按钮
+.submit-btn {
+  width: 100%;
+  height: $input-height;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: $border-radius;
+  transition: $transition-standard;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(var(--el-color-primary-rgb), 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// 验证码组件
+.verify-code-container {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  width: 100%;
+
+  .verify-code-input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.verify-code-btn {
+  flex-shrink: 0;
+  width: 108px;
+  height: var(--el-input-height);
+  padding: 0;
+  font-size: 14px;
+  color: var(--el-text-color-regular);
+  white-space: nowrap;
+  background-color: var(--el-fill-color-blank);
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: $border-radius;
+  transition: $transition-standard;
+
+  &:not(.is-disabled) {
+    &:hover {
+      color: var(--el-color-primary);
+      background-color: var(--el-color-primary-light-9);
+      border-color: var(--el-color-primary-light-3);
+    }
+
+    &:active {
+      background-color: var(--el-color-primary-light-8);
+    }
+  }
+
+  &.is-disabled {
+    color: var(--el-text-color-placeholder);
+    cursor: not-allowed;
+    background-color: var(--el-fill-color-light);
+    border-color: var(--el-border-color-lighter);
+    opacity: 0.6;
+  }
+}
+
+// 表单切换动画
+.form-slide-enter-active,
+.form-slide-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.form-slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.form-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
