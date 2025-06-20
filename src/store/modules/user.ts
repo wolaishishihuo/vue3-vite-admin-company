@@ -5,6 +5,7 @@ import { defineStore } from 'pinia';
 import router, { resetRouter } from '@/router';
 import { initDynamicRouter } from '@/router/modules/dynamicRouter';
 import piniaPersistConfig from '../helper';
+import { useAuthStore } from './auth';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -55,6 +56,8 @@ export const useUserStore = defineStore('user', {
 
     // 登出
     async logout() {
+      const authStore = useAuthStore();
+      authStore.resetAuthInfo();
       this.resetUserInfo();
       resetRouter();
       router.push('/login');

@@ -26,7 +26,7 @@ router.beforeEach(async (to, from, next) => {
     const settingStore = useSettingStore();
     const userStore = useUserStore();
     const authStore = useAuthStore();
-    console.log(settingStore.showNprogress);
+
     if (settingStore.showNprogress) NProgress.start();
 
     // 1. 动态设置标题
@@ -59,9 +59,9 @@ router.beforeEach(async (to, from, next) => {
 
     // 5. 获取权限列表
     if (!authStore.authMenuListGet.length) {
+      console.log('动态路由加载');
       try {
         await initDynamicRouter();
-
         return next({ ...to, replace: true });
       } catch (error) {
         console.error('动态路由加载失败:', error);
