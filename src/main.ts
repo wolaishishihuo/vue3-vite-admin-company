@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { createApp } from 'vue';
-import { setupAssets } from '@/plugins/index';
+import { setupAssets, setupElement } from '@/plugins/index';
 import { setupRouter } from '@/router';
 import { setupStore } from '@/store';
 import APP from './App.vue';
@@ -14,7 +14,7 @@ function setupPlugins() {
   // 设置资源
   setupAssets();
   // 设置element
-  // setupElement(app);
+  setupElement(app);
   // 注册指令
   // setupDirective(app);
 }
