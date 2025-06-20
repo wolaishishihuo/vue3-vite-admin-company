@@ -2,7 +2,7 @@
   <div class="logo" :style="{ width: menuCollapse ? `${defaultMenuCollapseWidth}px` : `${defaultMenuWidth}px` }">
     <div class="h-50 w-full" :class="menuCollapse ? 'i-svg:app' : 'i-svg:logo'" />
   </div>
-  <div class="menuCollapse">
+  <div class="cursor-pointer">
     <el-icon @click="visibleMenu">
       <component :is="menuCollapse ? 'Fold' : 'Expand'" />
     </el-icon>
