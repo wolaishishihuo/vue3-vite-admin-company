@@ -6,7 +6,7 @@ import { setupStore } from '@/store';
 import APP from './App.vue';
 // import errorHandler from '@/utils/errorHandler';
 
-const app: App = createApp(APP); // 创建vue实例
+const app: App = createApp(APP);
 // 注册插件
 function setupPlugins() {
   // 设置全局代码错误捕捉

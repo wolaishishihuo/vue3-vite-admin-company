@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <!-- <SvgIcon @click="goHome" name="logo" :icon-style="{ width: '100px', height: '50px' }" /> -->
+    <div class="i-svg:logo h-50 w-full" />
   </div>
 </template>
 
