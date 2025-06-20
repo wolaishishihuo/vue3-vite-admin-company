@@ -11,7 +11,7 @@
         "isLink": "",
         "isHide": false,
         "isFull": false,
-        "isAffix": false,
+        "isAffix": true,
         "isKeepAlive": false
       }
     },

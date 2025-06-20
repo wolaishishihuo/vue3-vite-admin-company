@@ -17,7 +17,7 @@
           @click="clickTab(item)"
           @contextmenu.prevent="(e: MouseEvent) => showMenu(e, item.path)"
         >
-          {{ item.meta.title }}
+          {{ item.meta.title || '123' }}
           <el-icon
             v-if="list.length > 1 && !item.meta.isAffix"
             @click.stop="closeWorktab('current', item.path)"
@@ -118,4 +118,6 @@ const showMenu = (e: MouseEvent, path?: string) => {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use './index';
+</style>

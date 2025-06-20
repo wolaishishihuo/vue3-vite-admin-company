@@ -35,7 +35,6 @@ router.beforeEach(async (to, from, next) => {
       ?.meta
       ?.title;
     document.title = pageTitle ? `${pageTitle} - ${title}` : title;
-    setWorktab(to);
 
     // 2. 处理登录页面
     if (to.path === LOGIN_URL) {
@@ -59,6 +58,7 @@ router.beforeEach(async (to, from, next) => {
     if (!authStore.authMenuListGet.length) {
       try {
         await initDynamicRouter();
+
         return next({ ...to, replace: true });
       } catch (error) {
         console.error('动态路由加载失败:', error);
@@ -70,7 +70,7 @@ router.beforeEach(async (to, from, next) => {
         });
       }
     }
-
+    setWorktab(to);
     authStore.setRouteName(to.name as string);
     next();
   } catch (error) {

@@ -12,6 +12,7 @@ import { isIframe } from './route';
 export const setWorktab = (to: RouteLocationNormalized): void => {
   const worktabStore = useWorktabStore();
   const { meta, path, name, params, query } = to;
+
   if (!meta.isHide) {
     // 如果是 iframe 页面，则特殊处理工作标签页
     if (isIframe(path)) {
