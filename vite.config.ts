@@ -36,8 +36,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     resolve: {
       alias: {
         '@': path.join(__dirname, './src'),
-        '~': path.join(__dirname, './src/assets'),
+        '~assets': path.join(__dirname, './src/assets'),
         '~root': path.join(__dirname, '.')
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          additionalData: `@use "@/styles/variables.scss" as *;`
+        }
       }
     },
     esbuild: {

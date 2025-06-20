@@ -41,13 +41,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
         /\.vue$/,
         /\.vue\?vue/
       ],
-      imports: [
-        'vue',
-        '@vueuse/core',
-        {
-          'vue-router': ['useRouter', 'useRoute']
-        }
-      ],
+      imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
       dts: 'src/types/auto-imports.d.ts',
       resolvers: [ElementPlusResolver()]
     }),

@@ -41,11 +41,5 @@ function createComponentWrapper(component, route) {
 </script>
 
 <style scoped lang="scss">
-.el-main {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 16px;
-  overflow: hidden;
-  background-color: var(--el-bg-color-page);
-}
+
 </style>

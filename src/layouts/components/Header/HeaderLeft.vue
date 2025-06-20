@@ -1,9 +1,12 @@
 <template>
-  <div class="logo" :style="{ width: menuCollapse ? `${defaultMenuCollapseWidth}px` : `${defaultMenuWidth}px` }">
-    <div class="h-50 w-full" :class="menuCollapse ? isDark ? 'i-svg:logo-small-dark' : 'i-svg:logo-small-light' : isDark ? 'i-svg:logo-large-dark' : 'i-svg:logo-large-light'" />
+  <div class="transition-all duration-300" :style="{ width: `${menuOpenWidth}px` }">
+    <div class="h-50 w-full" :class="logoClass" />
   </div>
-  <div class="cursor-pointer">
-    <el-icon @click="visibleMenu">
+  <div
+    class="transition-transform duration-300 hover:bg-gray-100 hover:scale-110 dark:hover:bg-gray-800"
+    @click="visibleMenu"
+  >
+    <el-icon class="text-lg">
       <component :is="menuCollapse ? 'Expand' : 'Fold'" />
     </el-icon>
   </div>
@@ -20,7 +23,16 @@ const settingStore = useSettingStore();
 const { isDark } = storeToRefs(settingStore);
 
 const menuCollapse = computed(() => settingStore.menuOpen);
-const visibleMenu = () => {
+const menuOpenWidth = computed(() => settingStore.menuOpenWidth);
+
+const logoClass = computed(() => {
+  if (menuCollapse.value) {
+    return isDark.value ? 'i-svg:logo-small-dark' : 'i-svg:logo-small-light';
+  }
+  return isDark.value ? 'i-svg:logo-large-dark' : 'i-svg:logo-large-light';
+});
+
+const visibleMenu = (): void => {
   settingStore.setMenuOpen(!settingStore.menuOpen);
   settingStore.setMenuOpenWidth(menuCollapse.value ? defaultMenuCollapseWidth : defaultMenuWidth);
 };

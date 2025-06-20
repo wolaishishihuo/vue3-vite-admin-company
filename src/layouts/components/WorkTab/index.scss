@@ -5,7 +5,6 @@
   width: 100%;
   padding: 10px;
   user-select: none;
-  background-color: var(--el-bg-color-page);
 
   .scroll-view {
     width: 100%;
@@ -22,16 +21,16 @@
         margin-right: 6px;
         font-size: 13px;
         line-height: 32px;
-        color: var(--el-text-color-regular);
+        color: var(--art-text-gray-600);
         text-align: center;
         cursor: pointer;
-        background: var(--el-bg-color);
-        border: 1px solid transparent;
+        background: var(--art-main-bg-color);
+        border: 1px solid var(--art-card-border) !important;
         border-radius: calc(var(--custom-radius) / 2.5 + 2px) !important;
         transition: color 0.1s;
 
         &:hover {
-          color: var(--el-color-primary-light-3) !important;
+          color: var(--main-color) !important;
           transition: color 0.2s;
         }
 
@@ -50,19 +49,19 @@
       }
 
       .activ-tab {
-        color: var(--el-color-primary) !important;
+        color: var(--main-color) !important;
       }
     }
   }
 
   &.tab-card {
     padding: 4px 20px;
-    border-bottom: 1px solid var(--el-border-color);
+    border-bottom: 1px solid var(--art-border-color);
   }
 
   &.tab-google {
     padding: 5px 20px 0;
-    border-bottom: 1px solid var(--el-border-color);
+    border-bottom: 1px solid var(--art-border-color);
 
     .tabs {
       padding-left: 5px;
@@ -82,7 +81,7 @@
           width: 1px;
           height: 16px;
           margin: auto;
-          background: var(--el-border-color);
+          background: var(--art-border-dashed-color);
           transition: opacity 0.15s;
         }
 
@@ -117,9 +116,9 @@
 
         &:hover {
           box-sizing: border-box;
-          color: var(--el-text-color-regular) !important;
-          background-color: var(--el-bg-color-page) !important;
-          border-bottom: 1px solid var(--el-border-color) !important;
+          color: var(--art-text-gray-600) !important;
+          background-color: var(--art-gray-200) !important;
+          border-bottom: 1px solid var(--art-main-bg-color) !important;
           border-radius: calc(var(--custom-radius) / 2.5 + 4px) !important;
 
           .line {
@@ -132,7 +131,7 @@
         }
 
         &.activ-tab {
-          color: var(--el-color-primary) !important;
+          color: var(--main-color) !important;
           background-color: var(--el-color-primary-light-9) !important;
           border-bottom: 0 !important;
           border-bottom-right-radius: 0 !important;
@@ -154,8 +153,8 @@
 
         i {
           &:hover {
-            color: var(--el-text-color-regular);
-            background: var(--el-bg-color-page);
+            color: var(--art-text-gray-700);
+            background: var(--art-gray-300);
           }
         }
       }
@@ -184,6 +183,18 @@
 
       &.history {
         color: #666;
+      }
+    }
+  }
+}
+
+.dark {
+  .tabs {
+    li {
+      i {
+        &:hover {
+          background: rgb(238 238 238 / 10%) !important;
+        }
       }
     }
   }
