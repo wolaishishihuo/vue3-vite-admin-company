@@ -105,5 +105,5 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@import '../styles/forms.scss';
+@use '../styles/forms.scss';
 </style>

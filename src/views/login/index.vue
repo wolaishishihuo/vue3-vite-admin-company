@@ -68,5 +68,5 @@ const { isRegister, back, goRegister } = useLoginAndRegister();
 </script>
 
 <style scoped lang="scss">
-@import './index';
+@use './index';
 </style>

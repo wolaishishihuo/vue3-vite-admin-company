@@ -35,5 +35,5 @@ const handleClickMenu = (subItem: Menu.MenuOptions) => {
 </script>
 
 <style lang="scss">
-@import './index';
+@use './index';
 </style>

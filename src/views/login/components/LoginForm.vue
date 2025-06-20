@@ -111,7 +111,7 @@ const switchLoginType = (type: 'password' | 'email') => {
 </script>
 
 <style scoped lang="scss">
-@import '../styles/forms.scss';
+@use '../styles/forms.scss';
 
 // 添加登录类型下划线样式
 .login-type-item {
