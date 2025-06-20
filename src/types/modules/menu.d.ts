@@ -7,6 +7,8 @@ declare namespace Menu {
     redirect?: string;
     meta: MetaProps;
     children?: MenuOptions[];
+    params?: object;
+    query?: LocationQueryRaw;
   }
   interface MetaProps {
     title: string;

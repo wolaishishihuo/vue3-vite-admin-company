@@ -44,3 +44,16 @@ export function getFirstAvailableMenu(menuList: Menu.MenuOptions[]): Menu.MenuOp
   }
   return null;
 }
+
+/**
+ * 获取 iframe 路由
+ * @returns iframe 路由列表
+ */
+export const getIframeRoutes = (): Menu.MenuOptions[] => {
+  try {
+    return JSON.parse(sessionStorage.getItem('iframeRoutes') || '[]');
+  } catch (error) {
+    console.error('解析 iframe 路由失败:', error);
+    return [];
+  }
+};

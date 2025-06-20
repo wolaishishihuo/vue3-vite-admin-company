@@ -19,6 +19,7 @@
         </div>
       </el-aside>
       <el-container class="classic-main">
+        <WorkTab />
         <Main />
       </el-container>
     </el-container>
@@ -33,6 +34,7 @@ import { useSettingStore } from '@/store/modules/setting';
 import { filterHiddenMenus, processMenuItems } from '@/utils/menu';
 import HeaderLeft from './components/Header/HeaderLeft.vue';
 import HeaderRight from './components/Header/HeaderRight.vue';
+import WorkTab from './components/WorkTab/index.vue';
 
 const route = useRoute();
 const authStore = useAuthStore();

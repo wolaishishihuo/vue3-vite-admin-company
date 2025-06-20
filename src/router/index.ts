@@ -5,6 +5,7 @@ import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import NProgress from '@/config/nprogress';
 import { useAuthStore } from '@/store/modules/auth';
 import { useUserStore } from '@/store/modules/user';
+import { setWorktab } from '@/utils/navigation/worktab';
 import { initDynamicRouter } from './modules/dynamicRouter';
 import { errorRouter, staticRouter } from './modules/staticRouter';
 
@@ -34,6 +35,7 @@ router.beforeEach(async (to, from, next) => {
       ?.meta
       ?.title;
     document.title = pageTitle ? `${pageTitle} - ${title}` : title;
+    setWorktab(to);
 
     // 2. 处理登录页面
     if (to.path === LOGIN_URL) {
@@ -54,7 +56,6 @@ router.beforeEach(async (to, from, next) => {
     }
 
     // 5. 获取权限列表
-    console.log(authStore.authMenuListGet);
     if (!authStore.authMenuListGet.length) {
       try {
         await initDynamicRouter();

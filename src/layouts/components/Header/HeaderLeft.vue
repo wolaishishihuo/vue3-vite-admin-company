@@ -4,7 +4,7 @@
   </div>
   <div class="cursor-pointer">
     <el-icon @click="visibleMenu">
-      <component :is="menuCollapse ? 'Fold' : 'Expand'" />
+      <component :is="menuCollapse ? 'Expand' : 'Fold'" />
     </el-icon>
   </div>
 </template>
