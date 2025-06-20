@@ -176,6 +176,10 @@ export const useSettingStore = defineStore(
       initThemeStyles();
     });
 
+    const initSettingStore = () => {
+      systemThemeType.value = SystemThemeEnum.LIGHT;
+    };
+
     return {
       menuType,
       menuOpenWidth,
@@ -208,6 +212,7 @@ export const useSettingStore = defineStore(
       isDark,
       getMenuOpenWidth,
       getCustomRadius,
+      initSettingStore,
       switchMenuLayouts,
       setMenuOpenWidth,
       setGlopTheme,

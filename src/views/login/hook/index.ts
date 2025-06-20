@@ -1,5 +1,7 @@
 import type { ElForm, FormRules } from 'element-plus';
 import { HOME_URL } from '@/config';
+import { useSettingStore } from '@/store/modules/setting';
+import { useUserStore } from '@/store/modules/user';
 
 type FormInstance = InstanceType<typeof ElForm>;
 
@@ -23,7 +25,8 @@ const goRegister = () => {
 export default () => {
   const router = useRouter();
   const loading = ref(false);
-
+  const userStore = useUserStore();
+  const settingStore = useSettingStore();
   const loginForm = reactive<LoginForm>({
     username: 'jiazhigang_888@163.com',
     password: '123456',
@@ -50,6 +53,8 @@ export default () => {
     await formValidate();
     loading.value = true;
     try {
+      userStore.setAccessToken('123');
+      settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {
       loading.value = false;
@@ -60,6 +65,8 @@ export default () => {
     await formValidate();
     loading.value = true;
     try {
+      userStore.setAccessToken('123');
+      settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {
       loading.value = false;

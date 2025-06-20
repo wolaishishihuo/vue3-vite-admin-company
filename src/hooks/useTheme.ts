@@ -27,7 +27,6 @@ export function useTheme() {
   const setSystemTheme = (theme: SystemThemeEnum, themeMode?: SystemThemeEnum) => {
     // 临时禁用过渡效果
     disableTransitions();
-
     const el = document.getElementsByTagName('html')[0];
     const isDark = theme === SystemThemeEnum.DARK;
 

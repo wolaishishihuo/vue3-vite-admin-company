@@ -10,7 +10,7 @@
     </el-header>
     <el-container class="classic-content">
       <el-aside>
-        <div class="aside-box" :style="{ width: `${menuOpenWidth}px` }">
+        <div class="aside-box" :style="{ width: menuCollapse ? `${defaultMenuCollapseWidth}px` : `${defaultMenuWidth}px` }">
           <el-scrollbar>
             <el-menu :router="false" :default-active="activeMenu" :collapse="menuCollapse" :unique-opened="true" :collapse-transition="false">
               <SubMenu :menu-list="menuList" />
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import appConfig from '@/config';
 import Main from '@/layouts/components/Main/index.vue';
 import SubMenu from '@/layouts/components/SubMenu/index.vue';
 import { useAuthStore } from '@/store/modules/auth';
@@ -40,7 +41,8 @@ const route = useRoute();
 const authStore = useAuthStore();
 const settingStore = useSettingStore();
 
-const menuOpenWidth = computed(() => settingStore.menuOpenWidth);
+const { defaultMenuCollapseWidth, defaultMenuWidth } = appConfig.systemSetting;
+
 const menuCollapse = computed(() => settingStore.menuOpen);
 
 const menuList = computed(() => {

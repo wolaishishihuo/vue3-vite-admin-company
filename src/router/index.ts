@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import NProgress from '@/config/nprogress';
 import { useAuthStore } from '@/store/modules/auth';
+import { useSettingStore } from '@/store/modules/setting';
 import { useUserStore } from '@/store/modules/user';
 import { setWorktab } from '@/utils/navigation/worktab';
 import { initDynamicRouter } from './modules/dynamicRouter';
@@ -22,9 +23,11 @@ const router: Router = createRouter({
  */
 router.beforeEach(async (to, from, next) => {
   try {
+    const settingStore = useSettingStore();
     const userStore = useUserStore();
     const authStore = useAuthStore();
-    NProgress.start();
+    console.log(settingStore.showNprogress);
+    if (settingStore.showNprogress) NProgress.start();
 
     // 1. 动态设置标题
     const title = import.meta.env.VITE_GLOB_APP_TITLE;

@@ -1,6 +1,6 @@
 // 导入模块化样式文件
-@use './styles/animations.scss';
-@use './styles/layout.scss';
+@use './styles/animations.scss' as *;
+@use './styles/layout.scss' as *;
 
 // 提交按钮 (保留在此文件中，便于组件内直接使用)
 .submit-btn {

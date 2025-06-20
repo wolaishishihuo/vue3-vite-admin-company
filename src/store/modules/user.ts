@@ -8,7 +8,7 @@ import piniaPersistConfig from '../helper';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    accessToken: '1',
+    accessToken: '',
     refreshToken: '',
     userInfo: null as User.UserInfo | null,
     permissions: [] as string[]
