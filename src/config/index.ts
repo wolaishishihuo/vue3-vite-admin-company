@@ -1,4 +1,5 @@
-// 首页地址（默认）
+import { MenuThemeEnum, SystemThemeEnum } from '@/enums/appEnum';
+
 export const HOME_URL: string = '/dashboard';
 
 // 登录页地址（默认）
@@ -7,32 +8,57 @@ export const LOGIN_URL: string = '/login';
 // 路由白名单地址
 export const ROUTER_WHITE_LIST: string[] = ['/500', '/403', '/404'];
 
-// 公共错误代码
-export const COMMON_ERROR_CODE = '10001';
-// 无权限
-export const COMMON_ACCESS_FORBIDDEN = '10003';
+// 首页地址（默认）
+/**
+ * 系统配置
+ * 包含：系统信息、系统主题、菜单主题、菜单布局、系统主色、系统主色列表、系统主色、系统其他项默认配置
+ */
+const appConfig = {
+  // 系统信息
+  systemInfo: {
+    name: 'Art Design Pro' // 系统名称
+  },
+  // Element Plus 主题
+  elementPlusTheme: {
+    primary: '#5D87FF'
+  },
+  // 系统主题
+  systemThemeStyles: {
+    [SystemThemeEnum.LIGHT]: { className: '' },
+    [SystemThemeEnum.DARK]: { className: SystemThemeEnum.DARK }
+  },
 
-// github 用户名
-export const GITHUB_OWNER = 'wolaishishihuo';
-// github 仓库名
-export const GITHUB_REPO = 'my-vue3-app';
-// github 域名
-export const GITHUB_API_BASE = 'https://api.github.com';
-
-// 高德地图
-export const AMAP_CONFIG = {
-  key: '5101582d67647dd57024b7c1fcdd0d6f',
-  securityJsCode: '59733ab1249dcdb45819a835f6769ea9'
+  darkMenuStyles: [
+    {
+      theme: MenuThemeEnum.DARK,
+      background: '#161618',
+      systemNameColor: '#DDDDDD',
+      iconColor: '#BABBBD',
+      textColor: 'rgba(#FFFFFF, 0.7)',
+      textActiveColor: '',
+      iconActiveColor: '#FFFFFF',
+      tabBarBackground: '#FFFFFF',
+      systemBackground: '#F8F8F8',
+      leftLineColor: '#3F4257',
+      rightLineColor: '#EDEEF0'
+    }
+  ],
+  // 系统主色
+  systemMainColor: [
+    '#5D87FF',
+    '#B48DF3',
+    '#1D84FF',
+    '#60C041',
+    '#38C0FC',
+    '#F9901F',
+    '#FF80C8'
+  ] as const,
+  // 系统其他项默认配置
+  systemSetting: {
+    defaultMenuWidth: 240, // 菜单宽度
+    defaultCustomRadius: '0.75', // 自定义圆角
+    defaultTabStyle: 'tab-default' // 标签样式
+  }
 };
 
-// 本地缓存
-export const LOCAL_CACHE_KEY = 'my-vue3-app-cache';
-export const LOCAL_CACHE_EXPIRY_TIME = 1000 * 60 * 60 * 24; // 24小时
-
-// 缓存keys
-export const CACHE_KEYS = {
-  todoKey: 'todos'
-};
-
-// 需要排除的缓存key
-export const EXCLUDE_CACHE_KEYS: string[] = [CACHE_KEYS.todoKey];
+export default Object.freeze(appConfig);

@@ -28,7 +28,37 @@
         "isAffix": false,
         "isKeepAlive": false
       }
+    },
+    {
+      "path": "/nested",
+      "name": "nested",
+      "component": "/nested/index",
+      "meta": {
+        "icon": "HomeFilled",
+        "title": "嵌套菜单",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": false
+      },
+      "children": [
+        {
+          "path": "/nested/menu1",
+          "name": "menu1",
+          "component": "/nested/menu1",
+          "meta": {
+            "icon": "HomeFilled",
+            "title": "菜单1",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": false
+          }
+        }
+      ]
     }
+
   ],
   "message": "成功"
 }

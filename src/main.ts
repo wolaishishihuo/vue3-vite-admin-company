@@ -2,7 +2,7 @@ import type { App } from 'vue';
 import { createApp } from 'vue';
 import { setupAssets } from '@/plugins/index';
 import { setupRouter } from '@/router';
-import { setupStore } from '@/stores';
+import { setupStore } from '@/store';
 import APP from './App.vue';
 // import errorHandler from '@/utils/errorHandler';
 

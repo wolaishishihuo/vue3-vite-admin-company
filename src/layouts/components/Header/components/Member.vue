@@ -23,9 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { useUserStore } from '@/stores/modules/user';
+import { useUserStore } from '@/store/modules/user';
 
 const router = useRouter();
 

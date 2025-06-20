@@ -3,8 +3,8 @@ import type { Router, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import NProgress from '@/config/nprogress';
-import { useAuthStore } from '@/stores/modules/auth';
-import { useUserStore } from '@/stores/modules/user';
+import { useAuthStore } from '@/store/modules/auth';
+import { useUserStore } from '@/store/modules/user';
 import { initDynamicRouter } from './modules/dynamicRouter';
 import { errorRouter, staticRouter } from './modules/staticRouter';
 

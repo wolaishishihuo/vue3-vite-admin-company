@@ -4,7 +4,7 @@
       <div class="header-lf mask-image">
         <HeaderLeft />
       </div>
-      <div class="header-ri">
+      <div class="header-ri flex-center gap-10">
         <HeaderRight />
       </div>
     </el-header>
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import Main from '@/layouts/components/Main/index.vue';
 import SubMenu from '@/layouts/components/SubMenu/index.vue';
-import { useAuthStore } from '@/stores/modules/auth';
+import { useAuthStore } from '@/store/modules/auth';
 import { filterHiddenMenus, processMenuItems } from '@/utils/menu';
 import HeaderLeft from './components/Header/HeaderLeft.vue';
 import HeaderRight from './components/Header/HeaderRight.vue';
