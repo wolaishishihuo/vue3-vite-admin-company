@@ -11,9 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { h, provide, ref } from 'vue';
-
-// 注入刷新页面方法
 const isRouterShow = ref(true);
 const refreshCurrentPage = (val: boolean) => (isRouterShow.value = val);
 provide('refresh', refreshCurrentPage);

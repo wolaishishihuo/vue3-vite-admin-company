@@ -1,10 +1,10 @@
 <template>
   <el-container class="layout">
     <el-header>
-      <div class="header-lf mask-image">
+      <div class="header-lf">
         <HeaderLeft />
       </div>
-      <div class="header-ri flex-center gap-10">
+      <div class="header-ri">
         <HeaderRight />
       </div>
     </el-header>
