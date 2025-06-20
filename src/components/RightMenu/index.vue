@@ -13,14 +13,14 @@
               :style="menuItemStyle"
               @click="handleMenuClick(item)"
             >
-              <i v-if="item.icon" class="iconfont-sys" v-html="item.icon" />
+              <i v-if="item.icon" class="iconfont-sys" :class="`i-svg:${item.icon}`" />
               <span class="menu-label">{{ item.label }}</span>
             </li>
 
             <!-- 子菜单 -->
             <li v-else class="menu-item submenu" :style="menuItemStyle">
               <div class="submenu-title">
-                <i v-if="item.icon" class="iconfont-sys" v-html="item.icon" />
+                <i v-if="item.icon" class="iconfont-sys" :class="`i-svg:${item.icon}`" />
                 <span class="menu-label">{{ item.label }}</span>
                 <i class="iconfont-sys submenu-arrow">&#xe865;</i>
               </div>
@@ -33,7 +33,7 @@
                   :style="menuItemStyle"
                   @click="handleMenuClick(child)"
                 >
-                  <i v-if="child.icon" class="iconfont-sys" v-html="child.icon" />
+                  <i v-if="child.icon" class="iconfont-sys" :class="`i-svg:${child.icon}`" />
                   <span class="menu-label">{{ child.label }}</span>
                 </li>
               </ul>
