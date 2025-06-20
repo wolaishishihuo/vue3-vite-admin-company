@@ -1,17 +1,17 @@
 <template>
-    <el-main>
-        <router-view v-slot="{ Component, route }">
-            <transition appear name="fade-transform" mode="out-in">
-                <keep-alive :include="['dashboard']">
-                    <component class="container" :is="createComponentWrapper(Component, route)" v-if="isRouterShow" :key="route.fullPath" />
-                </keep-alive>
-            </transition>
-        </router-view>
-    </el-main>
+  <el-main>
+    <router-view v-slot="{ Component, route }">
+      <transition appear name="fade-transform" mode="out-in">
+        <keep-alive :include="['dashboard']">
+          <component :is="createComponentWrapper(Component, route)" v-if="isRouterShow" :key="route.fullPath" class="container" />
+        </keep-alive>
+      </transition>
+    </router-view>
+  </el-main>
 </template>
 
 <script setup lang="ts">
-import { ref, provide, h } from 'vue';
+import { h, provide, ref } from 'vue';
 
 // 注入刷新页面方法
 const isRouterShow = ref(true);
@@ -26,29 +26,29 @@ provide('refresh', refreshCurrentPage);
  */
 const wrapperMap = new Map();
 function createComponentWrapper(component, route) {
-    if (!component) return;
+  if (!component) return;
 
-    // 使用路由完整路径作为包装器名称
-    const wrapperName = route.fullPath;
-    let wrapper = wrapperMap.get(wrapperName);
-    // 如果包装器不存在则创建新的包装器
-    if (!wrapper) {
-        wrapper = {
-            name: wrapperName,
-            render: () => h(component)
-        };
-        wrapperMap.set(wrapperName, wrapper);
-    }
-    return h(wrapper);
+  // 使用路由完整路径作为包装器名称
+  const wrapperName = route.fullPath;
+  let wrapper = wrapperMap.get(wrapperName);
+  // 如果包装器不存在则创建新的包装器
+  if (!wrapper) {
+    wrapper = {
+      name: wrapperName,
+      render: () => h(component)
+    };
+    wrapperMap.set(wrapperName, wrapper);
+  }
+  return h(wrapper);
 }
 </script>
 
 <style scoped lang="scss">
 .el-main {
-    box-sizing: border-box;
-    height: 100%;
-    padding: map-get($spacings, '5');
-    overflow: hidden;
-    background-color: var(--el-bg-color-page);
+  box-sizing: border-box;
+  height: 100%;
+  padding: 16px;
+  overflow: hidden;
+  background-color: var(--el-bg-color-page);
 }
 </style>

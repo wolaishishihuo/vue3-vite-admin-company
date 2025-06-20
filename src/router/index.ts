@@ -23,7 +23,6 @@ router.beforeEach(async (to, from, next) => {
   try {
     const userStore = useUserStore();
     const authStore = useAuthStore();
-
     NProgress.start();
 
     // 1. 动态设置标题
@@ -55,6 +54,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     // 5. 获取权限列表
+    console.log(authStore.authMenuListGet);
     if (!authStore.authMenuListGet.length) {
       try {
         await initDynamicRouter();

@@ -11,6 +11,7 @@ export const initDynamicRouter = async () => {
   const userStore = useUserStore();
   const authStore = useAuthStore();
   try {
+    console.log('initDynamicRouter');
     // 获取菜单列表 && 按钮权限列表
     await authStore.getAuthMenuList();
     await authStore.getAuthButtonList();
@@ -27,11 +28,13 @@ export const initDynamicRouter = async () => {
       router.replace(LOGIN_URL);
       return Promise.reject(new Error('No permission'));
     }
+
     // 动态添加路由
     authStore.flatMenuListGet.forEach((menu) => {
       if (menu.component && typeof menu.component === 'string') {
         menu.component = modules[`/src/views${menu.component}.vue`];
       }
+      console.log(menu);
       if (menu.meta?.isFull) {
         router.addRoute(menu as unknown as RouteRecordRaw);
       } else {

@@ -28,7 +28,7 @@ const generateSafeList = () => {
     return [];
   }
 };
-console.log(generateSafeList());
+
 export default defineConfig({
   theme: {
     colors: {

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 // import { getUserInfoApi, getUserRoleApi } from '@/api/user';
-import { EXCLUDE_CACHE_KEYS } from '@/config';
+// import { EXCLUDE_CACHE_KEYS } from '@/config';
 // import useLocalCache from '@/hooks/useLocalCache';
 import router, { resetRouter } from '@/router';
 import { initDynamicRouter } from '@/router/modules/dynamicRouter';
@@ -8,7 +8,7 @@ import piniaPersistConfig from '../helper';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    accessToken: '',
+    accessToken: '1',
     refreshToken: '',
     userInfo: null as User.UserInfo | null,
     permissions: [] as string[]

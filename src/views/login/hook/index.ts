@@ -1,11 +1,5 @@
 import type { ElForm, FormRules } from 'element-plus';
-import { reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
-// import { loginApi, registerApi } from '@/api/auth';
 import { HOME_URL } from '@/config';
-import useEnv from '@/hooks/useEnv';
-// import { initDynamicRouter } from '@/router/modules/dynamicRouter';
-// import { useUserStore } from '@/stores/modules/user';
 
 type FormInstance = InstanceType<typeof ElForm>;
 
@@ -28,13 +22,11 @@ const goRegister = () => {
 
 export default () => {
   const router = useRouter();
-  // const userStore = useUserStore();
   const loading = ref(false);
-  const env = useEnv();
 
   const loginForm = reactive<LoginForm>({
-    username: env.VITE_LOGIN_USERNAME!,
-    password: env.VITE_LOGIN_PASSWORD!,
+    username: 'jiazhigang_888@163.com',
+    password: '123456',
     emailCode: '',
     email: 'jiazhigang_888@163.com',
     loginType: 'password'
@@ -59,27 +51,6 @@ export default () => {
     loading.value = true;
     try {
       router.push(HOME_URL);
-      // const loginData = {
-      //   ...loginForm,
-      //   email: loginForm.loginType === 'email' ? loginForm.email : undefined,
-      //   emailCode: loginForm.loginType === 'email' ? loginForm.emailCode : undefined
-      // };
-      // const { data, success, message } = await loginApi(loginData);
-      // if (success) {
-      //   userStore.setAccessToken(data.access_token);
-      //   userStore.setRefreshToken(data.refresh_token);
-      //   await userStore.getUserInfo();
-      //   // 跳转到首页
-      //   const redirect = router.currentRoute.value.query.redirect;
-      //   if (redirect) {
-      //     router.push(redirect as string);
-      //   } else {
-      //     router.push(HOME_URL);
-      //   }
-      //   ElMessage.success('登录成功');
-      // } else {
-      //   ElMessage.error(message);
-      // }
     } finally {
       loading.value = false;
     }
@@ -89,13 +60,7 @@ export default () => {
     await formValidate();
     loading.value = true;
     try {
-      // const { success, message } = await registerApi(registerForm);
-      // if (success) {
-      //   ElMessage.success('注册成功, 请前往登录!');
-      //   back();
-      // } else {
-      //   ElMessage.error(message);
-      // }
+      router.push(HOME_URL);
     } finally {
       loading.value = false;
     }
@@ -110,7 +75,8 @@ export default () => {
       }
     };
   };
-  const validateEmail = (rule: any, value: string, callback: any) => {
+
+  const validateEmail = (_rule: any, value: string, callback: any) => {
     const emailRegex = /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/;
     if (!value) {
       callback(new Error('请输入邮箱地址'));

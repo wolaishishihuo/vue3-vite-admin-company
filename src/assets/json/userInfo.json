@@ -1,16 +1,16 @@
 {
-    "status": 200,
-    "data": {
-      "id": "1",
-      "username": "admin",
-      "nickname": "管理员",
-      "avatar": "https://loremflickr.com/800/600",
-      "email": "admin@example.com",
-      "phone": "13800138000",
-      "roles": ["admin", "super_editor"],
-      "status": 1,
-      "createTime": "2024-01-01 00:00:00",
-      "lastLoginTime": "2024-03-20 10:30:00"
-    },
-    "message": "成功"
-  }
+  "status": 200,
+  "data": {
+    "id": "1",
+    "username": "admin",
+    "nickname": "管理员",
+    "avatar": "https://loremflickr.com/800/600",
+    "email": "admin@example.com",
+    "phone": "13800138000",
+    "roles": ["admin", "super_editor"],
+    "status": 1,
+    "createTime": "2024-01-01 00:00:00",
+    "lastLoginTime": "2024-03-20 10:30:00"
+  },
+  "message": "成功"
+}
