@@ -10,9 +10,9 @@
     </el-header>
     <el-container class="classic-content">
       <el-aside>
-        <div class="aside-box" :style="{ width: '210px' }">
+        <div class="aside-box" :style="{ width: `${menuOpenWidth}px` }">
           <el-scrollbar>
-            <el-menu :router="false" :default-active="activeMenu" :unique-opened="true" :collapse-transition="false">
+            <el-menu :router="false" :default-active="activeMenu" :collapse="menuCollapse" :unique-opened="true" :collapse-transition="false">
               <SubMenu :menu-list="menuList" />
             </el-menu>
           </el-scrollbar>
@@ -29,12 +29,17 @@
 import Main from '@/layouts/components/Main/index.vue';
 import SubMenu from '@/layouts/components/SubMenu/index.vue';
 import { useAuthStore } from '@/store/modules/auth';
+import { useSettingStore } from '@/store/modules/setting';
 import { filterHiddenMenus, processMenuItems } from '@/utils/menu';
 import HeaderLeft from './components/Header/HeaderLeft.vue';
 import HeaderRight from './components/Header/HeaderRight.vue';
 
 const route = useRoute();
 const authStore = useAuthStore();
+const settingStore = useSettingStore();
+
+const menuOpenWidth = computed(() => settingStore.menuOpenWidth);
+const menuCollapse = computed(() => settingStore.menuOpen);
 
 const menuList = computed(() => {
   const rawMenuList = authStore.authMenuListGet;

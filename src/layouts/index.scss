@@ -8,6 +8,7 @@
     justify-content: space-between;
     height: 55px;
     padding: 0 16px;
+    padding-left: 0px;
     background-color: var(--el-bg-color);
     border-bottom: 1px solid var(--el-border-color);
     .header-lf {
@@ -19,7 +20,6 @@
         display: flex;
         flex-shrink: 0;
         align-items: center;
-        width: 196px;
       }
     }
     .header-ri {

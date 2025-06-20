@@ -55,7 +55,8 @@ const appConfig = {
   ] as const,
   // 系统其他项默认配置
   systemSetting: {
-    defaultMenuWidth: 240, // 菜单宽度
+    defaultMenuWidth: 210, // 菜单宽度
+    defaultMenuCollapseWidth: 64, // 菜单折叠宽度
     defaultCustomRadius: '0.75', // 自定义圆角
     defaultTabStyle: 'tab-default' // 标签样式
   }
