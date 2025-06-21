@@ -12,7 +12,7 @@
         "isHide": false,
         "isFull": false,
         "isAffix": true,
-        "isKeepAlive": false
+        "isKeepAlive": true
       }
     },
     {
@@ -26,7 +26,7 @@
         "isHide": false,
         "isFull": false,
         "isAffix": false,
-        "isKeepAlive": false
+        "isKeepAlive": true
       }
     },
     {

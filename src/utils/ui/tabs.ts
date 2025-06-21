@@ -10,7 +10,7 @@ export const TAB_CONFIG = {
   'tab-default': {
     openTop: 106,
     closeTop: 60,
-    openHeight: 121,
+    openHeight: 139,
     closeHeight: 75
   },
   'tab-card': {

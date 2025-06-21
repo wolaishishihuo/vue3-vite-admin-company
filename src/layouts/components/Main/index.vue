@@ -1,20 +1,47 @@
 <template>
   <el-main>
-    <router-view v-slot="{ Component, route }">
-      <transition appear name="fade-transform" mode="out-in">
-        <keep-alive :include="['dashboard']">
-          <component :is="createComponentWrapper(Component, route)" v-if="isRouterShow" :key="route.fullPath" class="container" />
-        </keep-alive>
-      </transition>
-    </router-view>
+    <div class="layout-content" :style="containerStyle">
+      <router-view
+        v-if="isRefresh"
+        v-slot="{ Component, route }"
+        :style="{ minHeight: containerMinHeight }"
+      >
+        <transition appear :name="pageTransition" mode="out-in">
+          <keep-alive :max="10" :exclude="keepAliveExclude">
+            <component :is="createComponentWrapper(Component, route)" :key="route.fullPath" />
+          </keep-alive>
+        </transition>
+      </router-view>
+    </div>
   </el-main>
 </template>
 
 <script setup lang="ts">
-const isRouterShow = ref(true);
-const refreshCurrentPage = (val: boolean) => (isRouterShow.value = val);
-provide('refresh', refreshCurrentPage);
+import { useCommon } from '@/hooks/useCommon';
+import { useSettingStore } from '@/store/modules/setting';
+import { useWorktabStore } from '@/store/modules/workTab';
 
+const { pageTransition, containerWidth, refresh } = storeToRefs(useSettingStore());
+const { keepAliveExclude } = storeToRefs(useWorktabStore());
+
+const { containerMinHeight } = useCommon();
+
+const containerStyle = computed(() => {
+  return {
+    maxWidth: containerWidth.value
+  };
+});
+
+const isRefresh = ref(true);
+const reload = () => {
+  console.log('reload');
+  isRefresh.value = false;
+  nextTick(() => {
+    isRefresh.value = true;
+  });
+};
+
+watch(refresh, reload);
 /**
  * 创建组件包装器以解决 keep-alive 和动态组件的问题
  * 1. 为每个路由组件创建唯一的包装组件，使其具有唯一的组件名(路由路径)
