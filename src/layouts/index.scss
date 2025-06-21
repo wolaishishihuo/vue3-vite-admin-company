@@ -51,6 +51,7 @@
           width: 100%;
           overflow-x: hidden;
           border-right: none;
+          padding: 8px;
           .el-menu-item.is-active::before {
             background-color: unset;
           }
