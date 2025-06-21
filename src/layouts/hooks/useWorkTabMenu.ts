@@ -38,20 +38,20 @@ export function useWorkTabMenu(
       {
         key: 'fixed',
         label: currentTab?.meta.isAffix ? '取消固定' : '固定',
-        icon: 'fixed',
+        icon: 'Lock',
         disabled: false,
         showLine: true
       },
       {
         key: 'left',
         label: '关闭左侧',
-        icon: 'left',
+        icon: 'back',
         disabled: clickedIndex === 0 || areAllLeftTabsFixed
       },
       {
         key: 'right',
         label: '关闭右侧',
-        icon: 'right',
+        icon: 'Right',
         disabled: isLastTab || areAllRightTabsFixed
       },
       {
@@ -63,7 +63,7 @@ export function useWorkTabMenu(
       {
         key: 'all',
         label: '关闭所有',
-        icon: 'all-close',
+        icon: 'CircleClose',
         disabled: isOneTab || areAllTabsFixed
       }
     ];

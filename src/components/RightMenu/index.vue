@@ -13,16 +13,22 @@
               :style="menuItemStyle"
               @click="handleMenuClick(item)"
             >
-              <i v-if="item.icon" class="iconfont-sys" :class="`i-svg:${item.icon}`" />
+              <el-icon v-if="item.icon">
+                <component :is="item.icon" />
+              </el-icon>
               <span class="menu-label">{{ item.label }}</span>
             </li>
 
             <!-- 子菜单 -->
             <li v-else class="menu-item submenu" :style="menuItemStyle">
               <div class="submenu-title">
-                <i v-if="item.icon" class="iconfont-sys" :class="`i-svg:${item.icon}`" />
+                <el-icon v-if="item.icon">
+                  <component :is="item.icon" />
+                </el-icon>
                 <span class="menu-label">{{ item.label }}</span>
-                <i class="iconfont-sys submenu-arrow">&#xe865;</i>
+                <el-icon class="submenu-arrow">
+                  <ArrowRight />
+                </el-icon>
               </div>
               <ul class="submenu-list" :style="submenuListStyle">
                 <li
@@ -33,7 +39,9 @@
                   :style="menuItemStyle"
                   @click="handleMenuClick(child)"
                 >
-                  <i v-if="child.icon" class="iconfont-sys" :class="`i-svg:${child.icon}`" />
+                  <el-icon v-if="child.icon">
+                    <component :is="child.icon" />
+                  </el-icon>
                   <span class="menu-label">{{ child.label }}</span>
                 </li>
               </ul>
