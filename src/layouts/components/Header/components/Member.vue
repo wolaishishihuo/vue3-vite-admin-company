@@ -36,9 +36,3 @@ const handleUserCenter = () => {
   router.push('/profile');
 };
 </script>
-
-<style scoped lang="scss">
-.header-member {
-  cursor: pointer;
-}
-</style>

@@ -47,7 +47,6 @@ const appConfig = {
   systemMainColor: [
     '#5D87FF',
     '#B48DF3',
-    '#1D84FF',
     '#60C041',
     '#38C0FC',
     '#F9901F',

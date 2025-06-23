@@ -23,6 +23,7 @@
         <Main />
       </el-container>
     </el-container>
+    <SettingPanel />
   </el-container>
 </template>
 
@@ -34,6 +35,7 @@ import { useSettingStore } from '@/store/modules/setting';
 import { filterHiddenMenus, processMenuItems } from '@/utils/menu';
 import HeaderLeft from './components/Header/HeaderLeft.vue';
 import HeaderRight from './components/Header/HeaderRight.vue';
+import SettingPanel from './components/SettingPanel/index.vue';
 import WorkTab from './components/WorkTab/index.vue';
 
 const route = useRoute();

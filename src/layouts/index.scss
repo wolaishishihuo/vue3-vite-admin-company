@@ -28,9 +28,8 @@
       overflow: hidden;
       white-space: nowrap;
       gap: 15px;
-      .theme {
-        width: 25px;
-        height: 25px;
+      > div {
+        cursor: pointer;
       }
     }
   }

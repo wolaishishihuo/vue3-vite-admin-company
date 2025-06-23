@@ -42,6 +42,7 @@ const reload = () => {
 };
 
 watch(refresh, reload);
+
 /**
  * 创建组件包装器以解决 keep-alive 和动态组件的问题
  * 1. 为每个路由组件创建唯一的包装组件，使其具有唯一的组件名(路由路径)

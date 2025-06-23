@@ -1,6 +1,8 @@
 <template>
   <div class="theme">
-    <div :class="`i-svg:${isDark ? 'sun' : 'moon'}`" style="width: 25px; height: 25px" @click="themeAnimation" />
+    <el-icon @click="themeAnimation">
+      <component :is="isDark ? 'Sunny' : 'Moon'" />
+    </el-icon>
   </div>
 </template>
 
