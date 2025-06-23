@@ -32,6 +32,15 @@
     }
   }
 }
+
+.el-menu--collapse {
+  .el-menu-item [class^='el-icon'],
+  .el-menu-item-group > ul > .el-sub-menu > .el-sub-menu__title [class^='el-icon'],
+  .el-sub-menu > .el-sub-menu__title [class^='el-icon'] {
+    margin: -8px !important;
+  }
+}
+
 .vertical,
 .classic,
 .transverse {

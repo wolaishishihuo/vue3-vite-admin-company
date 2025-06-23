@@ -1,5 +1,5 @@
 import { SystemThemeEnum } from '@/enums/appEnum';
-import { useCommon } from '@/hooks/useCommon';
+// import { useCommon } from '@/hooks/useCommon';
 import { useTheme } from '@/hooks/useTheme';
 import { useSettingStore } from '@/store/modules/setting';
 
@@ -32,7 +32,7 @@ export const themeAnimation = (e: any) => {
  */
 const toggleTheme = () => {
   useTheme().switchThemeStyles(useSettingStore().systemThemeType === LIGHT ? DARK : LIGHT);
-  useCommon().refresh();
+  // useCommon().refresh();
 };
 
 /**
