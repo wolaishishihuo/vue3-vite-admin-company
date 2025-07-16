@@ -18,7 +18,6 @@
     {
       "path": "/examples/tables",
       "name": "tables",
-      "component": "/examples/tables/index",
       "meta": {
         "icon": "Grid",
         "title": "组件示例",
@@ -62,7 +61,6 @@
     {
       "path": "/nested",
       "name": "nested",
-      "component": "/nested/index",
       "meta": {
         "icon": "HomeFilled",
         "title": "嵌套菜单",

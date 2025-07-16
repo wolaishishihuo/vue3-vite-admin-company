@@ -12,7 +12,19 @@
       <el-aside>
         <div class="aside-box" :style="{ width: `${menuOpenWidth}px` }">
           <el-scrollbar>
-            <el-menu :router="false" :default-active="activeMenu" :collapse="menuCollapse" :unique-opened="true" :collapse-transition="false">
+            <el-menu
+              :ellipsis="true"
+              :router="false"
+              :default-active="activeMenu"
+              :collapse="menuCollapse"
+              :unique-opened="true"
+              :collapse-transition="false"
+              text-color="var(--art-text-gray-700)"
+              :show-timeout="50"
+              :popper-offset="-6"
+              background-color="transparent"
+              :hide-timeout="50"
+            >
               <SubMenu :menu-list="menuList" />
             </el-menu>
           </el-scrollbar>
@@ -51,7 +63,9 @@ const menuList = computed(() => {
   return filterHiddenMenus(processedMenuList);
 });
 
-const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string);
+const activeMenu = computed(
+  () => (route.meta.activeMenu ? route.meta.activeMenu : route.path) as string
+);
 </script>
 
 <style scoped lang="scss">

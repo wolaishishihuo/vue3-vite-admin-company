@@ -1,6 +1,7 @@
 .el-container {
   width: 100%;
   height: 100%;
+
   :deep(.el-header) {
     box-sizing: border-box;
     display: flex;
@@ -8,55 +9,66 @@
     justify-content: space-between;
     height: 55px;
     padding: 0 16px;
-    padding-left: 0px;
+    padding-left: 0;
     background-color: var(--el-bg-color);
     border-bottom: 1px solid var(--el-border-color);
+
     .header-lf {
       display: flex;
       align-items: center;
       overflow: hidden;
       white-space: nowrap;
+
       .logo {
         display: flex;
         flex-shrink: 0;
         align-items: center;
       }
     }
+
     .header-ri {
       display: flex;
+      gap: 15px;
       align-items: center;
       overflow: hidden;
       white-space: nowrap;
-      gap: 15px;
+
       > div {
         cursor: pointer;
       }
     }
   }
+
   .classic-content {
     display: flex;
     height: calc(100vh - 55px);
     background-color: var(--art-bg-color);
+
     :deep(.el-aside) {
       width: auto;
       background-color: var(--el-bg-color);
       border-right: 1px solid var(--el-border-color);
+
       .aside-box {
         display: flex;
         flex-direction: column;
         height: 100%;
         transition: width 0.3s ease;
+
         .el-menu {
           width: 100%;
           overflow-x: hidden;
+          border: none;
           border-right: none;
-          padding: 8px;
-          .el-menu-item.is-active::before {
-            background-color: unset;
-          }
+        }
+        // 去除 el-menu-item 一级菜单默认样式
+        .el-menu-item[tabindex='0'] {
+          background-color: transparent !important;
+          border: none !important;
         }
       }
     }
+
     .classic-main {
       display: flex;
       flex-direction: column;

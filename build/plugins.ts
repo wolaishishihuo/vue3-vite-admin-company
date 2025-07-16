@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import viteCompression from 'vite-plugin-compression';
 import vitePluginImp from 'vite-plugin-imp';
+import stylelint from 'vite-plugin-stylelint';
 
 export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {
   return [
@@ -44,6 +45,14 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
       imports: ['vue', 'vue-router', '@vueuse/core', 'pinia'],
       dts: 'src/types/auto-imports.d.ts',
       resolvers: [ElementPlusResolver()]
+    }),
+
+    // StyleLint 插件
+    stylelint({
+      fix: true, // 自动修复样式问题
+      lintInWorker: true,
+      include: ['src/**/*.{css,scss,sass,vue,html}'],
+      cache: false
     }),
 
     legacy({
