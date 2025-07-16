@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import type { Router, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
+import { dialog } from '@/components/core/Dialog';
 import { LOGIN_URL, ROUTER_WHITE_LIST } from '@/config';
 import NProgress from '@/config/nprogress';
 import { useAuthStore } from '@/store/modules/auth';
@@ -22,6 +23,9 @@ const router: Router = createRouter({
  * @description 路由跳转开始
  */
 router.beforeEach(async (to, from, next) => {
+  // 关闭所有弹窗
+  dialog.closeAll();
+
   try {
     const settingStore = useSettingStore();
     const userStore = useUserStore();
