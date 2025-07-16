@@ -17,6 +17,8 @@ export default antfu(
       'jsdoc/require-returns-description': 'off',
       // vue
       'vue/block-order': ['error', { order: ['template', 'script', 'style'] }],
+      'vue/custom-event-name-casing': 'off',
+
       // ts
       'ts/no-use-before-define': 'off',
       'no-new': 'off',
