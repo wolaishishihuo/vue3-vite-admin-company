@@ -9,11 +9,11 @@ export const useTableStore = defineStore(
     // 表格大小
     const tableSize = ref(TableSizeEnum.DEFAULT);
     // 斑马纹
-    const isZebra = ref(false);
+    const isZebra = ref(true);
     // 边框
-    const isBorder = ref(false);
+    const isBorder = ref(true);
     // 表头背景
-    const isHeaderBackground = ref(false);
+    const isHeaderBackground = ref(true);
 
     // 是否全屏
     const isFullScreen = ref(false);
