@@ -16,7 +16,7 @@
       }
     },
     {
-      "path": "/examples/tables",
+      "path": "/examples",
       "name": "tables",
       "meta": {
         "icon": "Grid",
@@ -35,6 +35,20 @@
           "meta": {
             "icon": "Menu",
             "title": "基础表格",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/examples/dialog",
+          "name": "dialog",
+          "component": "/examples/dialog/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "对话框",
             "isLink": "",
             "isHide": false,
             "isFull": false,
@@ -86,7 +100,6 @@
         }
       ]
     }
-
   ],
   "message": "成功"
 }

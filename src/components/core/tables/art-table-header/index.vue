@@ -85,7 +85,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ColumnOption } from '@/components/core/tables/types';
+import type { ColumnOption } from '@/components/core/Tables/types';
 import { ElCheckbox, ElDropdown, ElDropdownItem, ElDropdownMenu, ElPopover } from 'element-plus';
 import { storeToRefs } from 'pinia';
 import { computed, onMounted, onUnmounted, ref } from 'vue';

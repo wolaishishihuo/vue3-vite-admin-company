@@ -1,6 +1,6 @@
 // 动态列配置
 
-import type { ColumnOption } from '@/components/core/tables/types';
+import type { ColumnOption } from '@/components/core/Tables/types';
 
 // 工具函数：根据列配置生成列选择状态
 const getColumnChecks = <T>(columns: ColumnOption<T>[]): ColumnOption<T>[] => {

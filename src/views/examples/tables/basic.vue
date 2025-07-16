@@ -14,6 +14,7 @@
           <ElButton v-ripple>
             导出Excel
           </ElButton>
+          <el-button type="primary" size="default" />
         </template>
       </ArtTableHeader>
 

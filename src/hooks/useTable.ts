@@ -1,6 +1,6 @@
 import type { ApiResponse } from '../utils/table/tableCache';
 import type { BaseRequestParams, TableError } from '../utils/table/tableUtils';
-import type { ColumnOption } from '@/components/core/tables/types';
+import type { ColumnOption } from '@/components/core/Tables/types';
 
 import { useWindowSize } from '@vueuse/core';
 // 导入拆分的模块
