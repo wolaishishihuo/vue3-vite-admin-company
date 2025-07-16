@@ -54,6 +54,7 @@ export default () => {
     loading.value = true;
     try {
       userStore.setToken('123');
+      userStore.setLoginStatus(true);
       settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {
@@ -66,6 +67,7 @@ export default () => {
     loading.value = true;
     try {
       userStore.setToken('123');
+      userStore.setLoginStatus(true);
       settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {

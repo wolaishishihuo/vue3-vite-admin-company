@@ -52,11 +52,7 @@ export const useUserStore = defineStore(
       }
     };
 
-    /**
-     * 退出登录
-     * 清空所有用户相关状态并跳转到登录页
-     */
-    const logOut = () => {
+    const resetUserInfo = () => {
       // 清空用户信息
       userInfo.value = {};
       // 重置登录状态
@@ -65,6 +61,14 @@ export const useUserStore = defineStore(
       accessToken.value = '';
       // 清空刷新令牌
       refreshToken.value = '';
+    };
+
+    /**
+     * 退出登录
+     * 清空所有用户相关状态并跳转到登录页
+     */
+    const logOut = () => {
+      resetUserInfo();
       // 清空工作台已打开页面
       useWorktabStore().opened = [];
       // 移除iframe路由缓存
@@ -84,6 +88,7 @@ export const useUserStore = defineStore(
       setUserInfo,
       setLoginStatus,
       setToken,
+      resetUserInfo,
       logOut
     };
   },
