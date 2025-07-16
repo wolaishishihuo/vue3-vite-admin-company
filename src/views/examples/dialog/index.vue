@@ -1,8 +1,7 @@
-<!-- Dialog组件使用示例 -->
 <template>
   <div class="art-full-height">
     <h2 class="mb-6 font-bold">
-      对话框组件示例
+      函数式模态框
     </h2>
 
     <!-- 动态创建示例 -->
