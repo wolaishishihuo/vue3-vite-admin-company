@@ -53,7 +53,7 @@ export default () => {
     await formValidate();
     loading.value = true;
     try {
-      userStore.setAccessToken('123');
+      userStore.setToken('123');
       settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {
@@ -65,7 +65,7 @@ export default () => {
     await formValidate();
     loading.value = true;
     try {
-      userStore.setAccessToken('123');
+      userStore.setToken('123');
       settingStore.initSettingStore();
       router.push(HOME_URL);
     } finally {
