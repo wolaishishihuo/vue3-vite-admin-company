@@ -1,0 +1,185 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Vue3 Vite Admin 项目规范指南
+
+## 1. 技术栈规范
+
+- **Vue3**: 使用组合式API（Composition API）进行开发
+- **TypeScript**: 所有组件和工具函数必须使用TypeScript
+- **Pinia**: 使用Pinia进行状态管理，避免使用Vuex
+- **Element Plus**: 作为UI组件库，统一界面风格
+- **VueUse**: 优先使用VueUse提供的组合式函数
+- **UnoCSS**: 使用UnoCSS进行原子化CSS开发
+- **Vite**: 作为构建工具，遵循Vite的最佳实践
+
+## 2. 文件目录规范
+
+- **src/assets/**: 静态资源文件夹
+  - css/: 全局CSS
+  - images/: 图片资源
+  - json/: JSON数据文件
+  - svgs/: SVG图标
+- **src/components/**: 公共组件
+- **src/config/**: 配置文件
+- **src/enums/**: 枚举定义
+- **src/hooks/**: 自定义组合式函数
+- **src/layouts/**: 布局组件
+- **src/plugins/**: 插件配置
+- **src/router/**: 路由配置
+- **src/store/**: Pinia状态管理
+- **src/styles/**: 全局样式
+- **src/types/**: TypeScript类型定义
+- **src/utils/**: 工具函数
+- **src/views/**: 页面组件
+
+## 3. 命名规范
+
+- **文件命名**:
+  - 组件文件: PascalCase (如: `UserProfile.vue`)
+  - 工具/Hook文件: camelCase (如: `useUserAuth.ts`)
+  - 类型定义文件: camelCase (如: `userTypes.ts`)
+- **变量命名**:
+  - 普通变量: camelCase
+  - 常量: UPPER_SNAKE_CASE
+  - 组件引用: camelCase
+  - 类型/接口: PascalCase
+- **CSS类名**: kebab-case (如: `header-container`)
+
+## 4. Vue组件规范
+
+- **组件结构**:
+  ```vue
+  <script lang="ts" setup>
+  // imports
+  // 类型定义
+  // props/emits定义
+  // 响应式数据
+  // 计算属性
+  // 生命周期钩子
+  // 方法定义
+  // 监听器
+  </script>
+
+  <template>
+    <!-- 模板内容 -->
+  </template>
+
+  <style lang="scss" scoped>
+  /* 样式内容 */
+  </style>
+  ```
+
+- **Props定义**: 必须使用`defineProps`并指定类型
+- **Emits定义**: 必须使用`defineEmits`明确定义事件
+- **组件通信**: 优先使用props和emits，复杂场景使用Pinia
+
+## 5. TypeScript规范
+
+- **类型定义**: 所有函数参数和返回值必须有类型注解
+- **接口优先**: 优先使用interface定义对象类型，使用type定义联合类型或工具类型
+- **枚举使用**: 对于固定的选项集合，使用enum定义
+- **类型导出**: 在`src/types`中集中管理和导出类型定义
+- **避免any**: 尽量避免使用any类型，必要时使用unknown并进行类型断言
+
+## 6. Pinia状态管理规范
+
+- **Store结构**:
+  ```ts
+  export const useUserStore = defineStore('user', () => {
+    // state
+    const userData = ref({});
+
+    // getters
+    const userName = computed(() => userData.value.name);
+
+    // actions
+    function fetchUserData() {
+      // 实现逻辑
+    }
+
+    return {
+      userData,
+      userName,
+      fetchUserData
+    };
+  });
+  ```
+- **Store分类**: 按功能模块分割Store
+- **持久化**: 关键数据使用pinia-plugin-persistedstate进行持久化
+
+## 7. Element Plus使用规范
+
+- **组件引入**: 使用按需导入方式
+- **主题定制**: 统一在样式文件中配置Element主题变量
+- **表单验证**: 所有表单必须使用Element的表单验证功能
+
+## 8. UnoCSS使用规范
+
+- **原子类优先**: 优先使用UnoCSS提供的原子类
+- **自定义工具类**: 在uno.config.ts中定义项目特定的工具类
+- **避免内联样式**: 禁止使用内联样式，统一使用类名
+
+## 9. API请求规范
+
+- **请求封装**: 统一使用封装好的请求函数
+- **错误处理**: 统一处理API错误，使用try-catch捕获异常
+- **数据转换**: 在API层进行数据转换，确保返回符合类型定义的数据
+
+## 10. 性能优化规范
+
+- **组件懒加载**: 路由组件使用懒加载
+- **虚拟列表**: 长列表使用虚拟滚动
+- **图片优化**: 使用webp格式，应用lazy-load
+- **缓存策略**: 合理使用浏览器缓存和应用缓存
+
+## 11. 国际化规范
+
+- **i18n**: 使用vue-i18n管理多语言
+- **文本提取**: 所有界面文字必须通过i18n函数引入
+- **动态语言**: 支持动态切换语言
+
+## 12. 提交规范
+
+严格遵循 commitlint.config.ts 中定义的提交规范：
+
+- **类型**：必须为以下之一：
+  - feat: 新功能
+  - fix: 修复bug
+  - perf: 性能优化
+  - style: 样式修改
+  - docs: 文档更新
+  - test: 测试
+  - refactor: 代码重构
+  - build: 构建相关
+  - ci: CI配置
+  - chore: 其他更改
+  - revert: 回退
+  - wip: 开发中
+  - workflow: 工作流
+  - types: 类型定义
+  - release: 发布
+
+- **格式**：`类型: 描述`（使用中文描述）
+
+## 13. 注释规范
+
+- **组件注释**:
+  ```ts
+  /**
+   * @description 组件描述
+   * @param {Type} propName - 属性描述
+   * @emits {Type} eventName - 事件描述
+   */
+  ```
+- **函数注释**:
+  ```ts
+  /**
+   * 函数描述
+   * @param {Type} paramName - 参数描述
+   * @returns {Type} - 返回值描述
+   */
+  ```
+- **代码逻辑注释**: 对复杂逻辑添加必要的注释
