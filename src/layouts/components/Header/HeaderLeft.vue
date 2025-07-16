@@ -3,7 +3,7 @@
     <div class="h-50 w-full" :class="logoClass" />
   </div>
   <div
-    class="transition-transform duration-300 hover:bg-gray-100 hover:scale-110 dark:hover:bg-gray-800"
+    class="transition-transform duration-300 hover:scale-110 hover:bg-gray-100 dark:hover:bg-gray-800"
     @click="visibleMenu"
   >
     <el-icon class="text-lg">

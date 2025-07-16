@@ -1,43 +1,43 @@
 .externalLinkIcon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    border-radius: 7px;
-    transition: all 0.3s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 7px;
+  transition: all 0.3s;
 }
 .svgContainer {
-    z-index: 11;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    letter-spacing: 0.8px;
-    background-color: transparent;
-    backdrop-filter: blur(0);
-    border: 1px solid rgb(156 156 156 / 46.6%);
-    border-radius: 10px;
-    transition: all 0.3s;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 0.8px;
+  background-color: transparent;
+  backdrop-filter: blur(0);
+  border: 1px solid rgb(156 156 156 / 46.6%);
+  border-radius: 10px;
+  transition: all 0.3s;
 }
 .svgBG {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    content: '';
-    background: #181818;
-    border-radius: 10px;
-    transition: all 0.3s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  content: '';
+  background: #181818;
+  border-radius: 10px;
+  transition: all 0.3s;
 }
 .externalLinkIcon:hover .svgBG {
-    transform: rotate(35deg);
-    transform-origin: bottom;
+  transform: rotate(35deg);
+  transform-origin: bottom;
 }
 .externalLinkIcon:hover .svgContainer {
-    background-color: rgb(156 156 156 / 46.6%);
-    backdrop-filter: blur(4px);
+  background-color: rgb(156 156 156 / 46.6%);
+  backdrop-filter: blur(4px);
 }

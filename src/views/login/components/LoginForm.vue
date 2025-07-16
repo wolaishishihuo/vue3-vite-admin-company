@@ -3,7 +3,7 @@
     <div class="login-type-switch">
       <div class="flex-center gap-20 lt-md:gap-10">
         <span
-          class="login-type-item cursor-pointer transition-all duration-300 relative"
+          class="login-type-item relative cursor-pointer transition-all duration-300"
           :class="[
             loginForm.loginType === 'password' ? 'text-primary font-medium scale-110' : 'text-gray-400 hover:text-gray-600',
           ]"
@@ -12,7 +12,7 @@
           账号密码登录
         </span>
         <span
-          class="login-type-item cursor-pointer transition-all duration-300 relative"
+          class="login-type-item relative cursor-pointer transition-all duration-300"
           :class="[
             loginForm.loginType === 'email' ? 'text-primary font-medium scale-110' : 'text-gray-400 hover:text-gray-600',
           ]"
@@ -44,7 +44,7 @@
               <el-input v-model="loginForm.emailCode" placeholder="请输入验证码" class="verify-code-input" />
               <el-button
                 :disabled="!canSendCode || isCountingDown"
-                class="verify-code-btn lt-md:text-sm lt-md:w-[100px]"
+                class="verify-code-btn lt-md:w-[100px] lt-md:text-sm"
                 :class="{ 'is-disabled': !canSendCode || isCountingDown }"
                 @click="sendVerificationCode"
               >

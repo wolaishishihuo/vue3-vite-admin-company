@@ -43,14 +43,14 @@
           <el-link
             type="primary"
             :underline="false"
-            class="font-medium ml-1"
+            class="ml-1 font-medium"
             @click="!isRegister ? goRegister() : back()"
           >
             {{ !isRegister ? "Sign up now" : "Sign in" }}
           </el-link>
         </div>
 
-        <div class="flex gap-15 justify-center">
+        <div class="flex justify-center gap-15">
           <ExternalLinkIcons v-for="icon in externalLinkIcons" :key="icon.name" :icon-name="icon.name" :iconlink="icon.link" />
         </div>
       </div>

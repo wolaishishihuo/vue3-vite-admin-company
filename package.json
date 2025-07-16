@@ -1,9 +1,9 @@
 {
-  "name": "vue3-vant-app",
+  "name": "vue3-admin-app",
   "type": "module",
-  "version": "4.0.0",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.10.0+sha256.fa0f513aa8191764d2b6b432420788c270f07b4f999099b65bb2010eec702a30",
-  "description": "An web apps template based on the Vue 3 ecosystem",
+  "description": "An web admin apps template based on the Vue 3 ecosystem",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
