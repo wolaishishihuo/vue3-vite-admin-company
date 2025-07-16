@@ -2,26 +2,38 @@
   color: var(--el-menu-hover-text-color) !important;
   background-color: transparent !important;
 }
+
 .el-menu--collapse {
   .is-active {
     .el-sub-menu__title {
-      color: #ffffff !important;
+      color: #fff !important;
       background-color: var(--el-color-primary) !important;
     }
   }
+
+  // 图标样式
+  .el-menu-item [class^='el-icon'],
+  .el-menu-item-group > ul > .el-sub-menu > .el-sub-menu__title [class^='el-icon'],
+  .el-sub-menu > .el-sub-menu__title [class^='el-icon'] {
+    margin: -8px !important;
+  }
 }
+
 .el-menu-item {
-  margin-bottom: 4px;
   height: 46px;
+  margin-bottom: 4px;
   line-height: 46px;
   border-radius: 6px;
+
   &:hover {
     color: var(--el-menu-hover-text-color);
     background-color: rgba(var(--art-gray-200-rgb), 0.8) !important;
   }
+
   &.is-active {
     color: var(--el-menu-active-color) !important;
     background-color: var(--el-color-primary-light-9);
+
     &::before {
       position: absolute;
       top: 0;
@@ -30,14 +42,6 @@
       content: '';
       background-color: var(--el-color-primary);
     }
-  }
-}
-
-.el-menu--collapse {
-  .el-menu-item [class^='el-icon'],
-  .el-menu-item-group > ul > .el-sub-menu > .el-sub-menu__title [class^='el-icon'],
-  .el-sub-menu > .el-sub-menu__title [class^='el-icon'] {
-    margin: -8px !important;
   }
 }
 
@@ -52,6 +56,7 @@
     }
   }
 }
+
 .columns {
   .el-menu-item {
     &.is-active {

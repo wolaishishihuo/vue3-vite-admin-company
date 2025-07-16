@@ -55,7 +55,9 @@ module.exports = {
           'if',
           'else',
           'for',
-          'while'
+          'while',
+          'function',
+          'return'
         ]
       }
     ]
