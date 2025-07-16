@@ -7,11 +7,6 @@ const include = [
   'echarts',
   'lodash-es',
   'resize-detector',
-  // 'vue-img-cutter',
-  // 'xlsx',
-  // 'file-saver',
-  // '@wangeditor/editor',
-  // '@wangeditor/editor-for-vue',
   'element-plus/es/components/form/style/css',
   'element-plus/es/components/form-item/style/css',
   'element-plus/es/components/button/style/css',
@@ -84,7 +79,6 @@ const include = [
   'element-plus/es/components/message/style/css',
   'element-plus/es/components/timeline/style/css',
   'element-plus/es/components/timeline-item/style/css'
-
 ];
 
 const exclude = [
