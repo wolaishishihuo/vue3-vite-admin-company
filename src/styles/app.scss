@@ -1,0 +1,67 @@
+// 容器全高
+.art-full-height {
+  display: flex;
+  flex-direction: column;
+  height: var(--art-full-height);
+  @media (max-width: $device-phone) {
+    height: auto;
+  }
+}
+
+// 元素全屏
+.el-full-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2300;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100vw !important;
+  height: 100% !important;
+  padding: 15px;
+  margin-top: 0;
+  background-color: var(--art-main-bg-color);
+}
+
+// 表格卡片
+.art-table-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 15px;
+  border-radius: calc(var(--custom-radius) / 2 + 2px) !important;
+
+  .el-card__body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+// 盒子边框
+[data-box-mode='border-mode'] {
+  .page-content,
+  .art-custom-card,
+  .art-table-card {
+    border: 1px solid var(--art-card-border) !important;
+  }
+
+  .layout-sidebar {
+    border-right: 1px solid var(--art-card-border) !important;
+  }
+}
+
+// 盒子阴影
+[data-box-mode='shadow-mode'] {
+  .page-content,
+  .art-custom-card,
+  .art-table-card {
+    border: 1px solid rgba(var(--art-gray-300-rgb), 0.3) !important;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 4%) !important;
+  }
+
+  .layout-sidebar {
+    border-right: 1px solid rgba(var(--art-gray-300-rgb), 0.4) !important;
+  }
+}

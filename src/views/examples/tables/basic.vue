@@ -1,27 +1,7 @@
 <!-- 基础表格 -->
 <template>
-  <div class="user-page art-full-height">
+  <div class="art-full-height">
     <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
-      <!-- 搜索栏 -->
-      <div class="search-bar mb-4">
-        <ElForm :model="searchState" inline>
-          <ElFormItem label="用户名">
-            <ElInput v-model="(searchState as any).name" placeholder="请输入" clearable />
-          </ElFormItem>
-          <ElFormItem label="手机号">
-            <ElInput v-model="(searchState as any).phone" placeholder="请输入" clearable />
-          </ElFormItem>
-          <ElFormItem>
-            <ElButton type="primary" @click="searchDataDebounced()">
-              查询
-            </ElButton>
-            <ElButton @click="resetSearch">
-              重置
-            </ElButton>
-          </ElFormItem>
-        </ElForm>
-      </div>
-
       <!-- 表格头部 -->
       <ArtTableHeader v-model:columns="columnChecks" @refresh="refreshAll">
         <template #left>
@@ -48,7 +28,6 @@
         @pagination:size-change="onPageSizeChange"
         @pagination:current-change="onCurrentPageChange"
       >
-        <!-- 操作列 -->
         <template #operation="{ row }">
           <ElButton type="primary" link @click="handleEdit(row)">
             编辑
@@ -155,11 +134,6 @@ const {
   onPageSizeChange,
   onCurrentPageChange,
 
-  // 搜索相关
-  searchState,
-  resetSearch,
-  searchDataDebounced,
-
   // 刷新方法
   refreshAll,
 
@@ -244,10 +218,6 @@ const handleDelete = (row: User) => {
 </script>
 
 <style lang="scss" scoped>
-.user-page {
-  padding: 16px;
-}
-
 :deep(.el-card__body) {
   padding: 16px;
 }

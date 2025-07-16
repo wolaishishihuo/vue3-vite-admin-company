@@ -4,6 +4,7 @@ import '@/styles/reset.scss'; // 全局样式
 import '@/styles/theme-animation.scss';
 import '@/styles/el-ui.scss';
 import '@/styles/transition.scss';
+import '@/styles/app.scss';
 
 import '@/assets/icons/system/iconfont.css';
 import '@/assets/icons/system/iconfont.js';
