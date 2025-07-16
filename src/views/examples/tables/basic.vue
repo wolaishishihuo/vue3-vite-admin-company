@@ -2,6 +2,21 @@
 <template>
   <div class="art-full-height">
     <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
+      <!-- 表格头部 -->
+      <ArtTableHeader v-model:columns="columnChecks" full-class="art-table-card" @refresh="refreshAll">
+        <template #left>
+          <ElButton v-ripple type="primary">
+            新增用户
+          </ElButton>
+          <ElButton v-ripple>
+            批量导入
+          </ElButton>
+          <ElButton v-ripple>
+            导出Excel
+          </ElButton>
+        </template>
+      </ArtTableHeader>
+
       <!-- 表格 -->
       <ArtTable
         :loading="isLoading"
@@ -123,7 +138,8 @@ const {
   refreshAll,
 
   // 列配置
-  columns
+  columns,
+  columnChecks
 } = useTable<User>({
   core: {
     apiFn: UserService.getUserList,
