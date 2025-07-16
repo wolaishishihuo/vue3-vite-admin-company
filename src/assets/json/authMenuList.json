@@ -16,6 +16,36 @@
       }
     },
     {
+      "path": "/examples/tables",
+      "name": "tables",
+      "component": "/examples/tables/index",
+      "meta": {
+        "icon": "Grid",
+        "title": "组件示例",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": false,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/examples/tables/basic",
+          "name": "tablesBasic",
+          "component": "/examples/tables/basic",
+          "meta": {
+            "icon": "Menu",
+            "title": "基础表格",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
       "path": "/about/index",
       "name": "about",
       "component": "/about/index",

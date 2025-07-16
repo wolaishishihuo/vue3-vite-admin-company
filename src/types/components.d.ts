@@ -39,6 +39,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElTag: typeof import('element-plus/es')['ElTag']
     ExternalLinkIcons: typeof import('./../components/custom/ExternalLinkIcons/index.vue')['default']
     RightMenu: typeof import('./../components/core/RightMenu/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
