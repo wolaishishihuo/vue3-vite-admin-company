@@ -38,7 +38,7 @@ export default antfu(
   {
     ignores: [
       'scripts/**',
-      'src/assets/iconfont/**'
+      'src/assets/icons/**'
     ]
   }
 );
