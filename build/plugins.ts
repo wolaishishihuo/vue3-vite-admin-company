@@ -49,7 +49,7 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
 
     // StyleLint 插件
     stylelint({
-      fix: true, // 自动修复样式问题
+      fix: false, // 禁用自动修复，只在保存时通过 VSCode 修复
       lintInWorker: true,
       include: ['src/**/*.{css,scss,sass,vue,html}'],
       cache: false

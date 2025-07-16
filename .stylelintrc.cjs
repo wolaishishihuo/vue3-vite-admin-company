@@ -20,6 +20,7 @@ module.exports = {
   ],
   // 自定义规则
   rules: {
+    'at-rule-empty-line-before': 'never',
     'import-notation': 'string', // 指定导入CSS文件的方式("string"|"url")
     'selector-class-pattern': null, // 选择器类名命名规则
     'custom-property-pattern': null, // 自定义属性命名规则

@@ -47,7 +47,6 @@ $fade-easing: transition-config('fade-easing');
 @mixin slide-transition($direction) {
   $distance-x: 0;
   $distance-y: 0;
-
   @if $direction == 'left' {
     $distance-x: -$distance;
   } @else if $direction == 'right' {
