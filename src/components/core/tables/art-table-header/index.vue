@@ -309,7 +309,6 @@ onUnmounted(() => {
     }
   }
 }
-
 @media (max-width: $device-phone) {
   .table-header {
     flex-direction: column;

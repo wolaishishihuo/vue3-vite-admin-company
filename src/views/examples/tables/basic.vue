@@ -4,18 +4,18 @@
     <ElCard class="art-table-card" shadow="never" style="margin-top: 0">
       <!-- 搜索栏 -->
       <div class="search-bar mb-4">
-        <ElForm :model="searchForm" inline>
+        <ElForm :model="searchState" inline>
           <ElFormItem label="用户名">
-            <ElInput v-model="searchForm.name" placeholder="请输入" clearable />
+            <ElInput v-model="(searchState as any).name" placeholder="请输入" clearable />
           </ElFormItem>
           <ElFormItem label="手机号">
-            <ElInput v-model="searchForm.phone" placeholder="请输入" clearable />
+            <ElInput v-model="(searchState as any).phone" placeholder="请输入" clearable />
           </ElFormItem>
           <ElFormItem>
-            <ElButton type="primary" @click="handleSearch">
+            <ElButton type="primary" @click="searchDataDebounced()">
               查询
             </ElButton>
-            <ElButton @click="handleReset">
+            <ElButton @click="resetSearch">
               重置
             </ElButton>
           </ElFormItem>
@@ -23,7 +23,7 @@
       </div>
 
       <!-- 表格头部 -->
-      <ArtTableHeader v-model:columns="columnChecks" @refresh="refresh">
+      <ArtTableHeader v-model:columns="columnChecks" @refresh="refreshAll">
         <template #left>
           <ElButton v-ripple type="primary">
             新增用户
@@ -39,14 +39,14 @@
 
       <!-- 表格 -->
       <ArtTable
-        :loading="loading"
+        :loading="isLoading"
         :data="tableData"
         :columns="columns"
-        :pagination="pagination"
+        :pagination="paginationState"
         :table-config="{ rowKey: 'id' }"
         :layout="{ marginTop: 10 }"
-        @pagination:size-change="handleSizeChange"
-        @pagination:current-change="handleCurrentChange"
+        @pagination:size-change="onPageSizeChange"
+        @pagination:current-change="onCurrentPageChange"
       >
         <!-- 操作列 -->
         <template #operation="{ row }">
@@ -64,8 +64,7 @@
 
 <script setup lang="ts">
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
-import { useTableColumns } from '@/hooks/useTableColumns';
+import { useTable } from '@/hooks/useTable';
 
 defineOptions({ name: 'BasicTableExample' });
 
@@ -145,107 +144,88 @@ const UserService = {
   }
 };
 
-// 搜索表单
-const searchForm = reactive({
-  name: '',
-  phone: ''
-});
+// 使用useTable钩子管理表格数据
+const {
+  // 表格数据和加载状态
+  tableData,
+  isLoading,
 
-// 表格列定义
-const { columns, columnChecks } = useTableColumns(() => [
-  { type: 'selection' },
-  { type: 'index' },
-  { prop: 'name', label: '用户名', width: 120 },
-  { prop: 'age', label: '年龄', width: 80 },
-  { prop: 'gender', label: '性别', width: 80 },
-  { prop: 'phone', label: '手机号', width: 120 },
-  { prop: 'email', label: '邮箱', width: 180 },
-  { prop: 'address', label: '地址', minWidth: 200 },
-  {
-    prop: 'status',
-    label: '状态',
-    width: 100,
-    useSlot: true,
-    slotName: 'status'
+  // 分页相关
+  paginationState,
+  onPageSizeChange,
+  onCurrentPageChange,
+
+  // 搜索相关
+  searchState,
+  resetSearch,
+  searchDataDebounced,
+
+  // 刷新方法
+  refreshAll,
+
+  // 列配置
+  columns,
+  columnChecks
+} = useTable<User>({
+  core: {
+    apiFn: UserService.getUserList,
+    apiParams: {
+      name: '',
+      phone: ''
+    },
+    immediate: true,
+    columnsFactory: () => [
+      { type: 'selection' },
+      { type: 'index' },
+      { prop: 'name', label: '用户名', width: 120 },
+      { prop: 'age', label: '年龄', width: 80 },
+      { prop: 'gender', label: '性别', width: 80 },
+      { prop: 'phone', label: '手机号', width: 120 },
+      { prop: 'email', label: '邮箱', width: 180 },
+      { prop: 'address', label: '地址', minWidth: 200 },
+      {
+        prop: 'status',
+        label: '状态',
+        width: 100,
+        useSlot: true,
+        slotName: 'status'
+      },
+      { prop: 'createTime', label: '创建时间', width: 120 },
+      {
+        prop: 'operation',
+        label: '操作',
+        width: 150,
+        useSlot: true,
+        slotName: 'operation'
+      }
+    ]
   },
-  { prop: 'createTime', label: '创建时间', width: 120 },
-  {
-    prop: 'operation',
-    label: '操作',
-    width: 150,
-    useSlot: true,
-    slotName: 'operation'
-  }
-]);
-
-// 表格数据和分页
-const tableData = ref<User[]>([]);
-const loading = ref(false);
-const pagination = reactive({
-  current: 1,
-  size: 10,
-  total: 0
-});
-
-// 获取表格数据
-const fetchTableData = async () => {
-  loading.value = true;
-  try {
-    const params = {
-      current: pagination.current,
-      size: pagination.size,
-      ...searchForm
-    };
-
-    const res = await UserService.getUserList(params);
-    if (res.code === 200) {
-      tableData.value = res.data.list;
-      pagination.total = res.data.total;
-    } else {
-      ElMessage.error(res.message || '获取数据失败');
+  transform: {
+    responseAdapter: (response: any) => {
+      return {
+        records: response.data.list,
+        total: response.data.total,
+        current: response.data.current,
+        size: response.data.size
+      };
     }
-  } catch (error) {
-    console.error('获取表格数据失败', error);
-    ElMessage.error('获取数据失败');
-  } finally {
-    loading.value = false;
+  },
+  performance: {
+    enableCache: true,
+    debounceTime: 300
+  },
+  hooks: {
+    onError: (error) => {
+      ElMessage.error(error.message || '获取数据失败');
+    }
   }
-};
-
-// 刷新数据
-const refresh = () => {
-  fetchTableData();
-};
-
-// 搜索
-const handleSearch = () => {
-  pagination.current = 1;
-  fetchTableData();
-};
-
-// 重置
-const handleReset = () => {
-  Object.keys(searchForm).forEach((key) => {
-    searchForm[key as keyof typeof searchForm] = '';
-  });
-  pagination.current = 1;
-  fetchTableData();
-};
-
-// 分页事件
-const handleSizeChange = (size: number) => {
-  pagination.size = size;
-  fetchTableData();
-};
-
-const handleCurrentChange = (current: number) => {
-  pagination.current = current;
-  fetchTableData();
-};
+});
 
 // 操作方法
 const handleEdit = (row: User) => {
   ElMessage.success(`编辑用户: ${row.name}`);
+  // 实际编辑操作后，使用refreshAfterUpdate刷新数据
+  // refreshAfterUpdate();
 };
 
 const handleDelete = (row: User) => {
@@ -255,15 +235,12 @@ const handleDelete = (row: User) => {
     type: 'warning'
   }).then(() => {
     ElMessage.success(`删除成功: ${row.name}`);
+    // 实际删除操作后，可以使用refreshAfterRemove刷新数据
+    refreshAll();
   }).catch(() => {
     // 取消操作
   });
 };
-
-// 首次加载数据
-onMounted(() => {
-  fetchTableData();
-});
 </script>
 
 <style lang="scss" scoped>

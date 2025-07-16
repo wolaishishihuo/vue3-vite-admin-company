@@ -22,6 +22,30 @@
   }
 }
 
+// el-card 背景色跟系统背景色保持一致
+html.dark .el-card {
+  --el-card-bg-color: var(--art-main-bg-color) !important;
+}
+
+// 修改 el-pagination 大小
+.el-pagination--default {
+  --el-pagination-button-width: 32px !important;
+  --el-pagination-button-height: var(--el-pagination-button-width) !important;
+
+  .el-select--default .el-select__wrapper {
+    min-height: var(--el-pagination-button-width) !important;
+  }
+
+  .el-pagination__jump .el-input {
+    height: var(--el-pagination-button-width) !important;
+  }
+}
+
+.el-pager li {
+  padding: 0 10px !important;
+  // border: 1px solid red !important;
+}
+
 // 优化菜单折叠展开动画（提升动画流畅度）
 .el-menu.el-menu--inline {
   transition: max-height 0.26s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -222,7 +246,6 @@
     }
 
     &::after {
-      inset: 0 0 4px;
       width: 4px;
       height: 8px;
       margin: auto;
@@ -306,7 +329,6 @@
     animation: dialog-close 0.5s;
   }
 }
-
 @keyframes dialog-open {
   0% {
     opacity: 0;
@@ -318,7 +340,6 @@
     transform: scale(1);
   }
 }
-
 @keyframes dialog-close {
   0% {
     opacity: 1;
