@@ -16,20 +16,15 @@ export interface DialogInstance {
 
 const createDialog = () => {
   let instances: DialogInstance[] = [];
-  let currentInstance: DialogInstance | null = null;
 
   const dialog = {
+    _context: {},
     create(options: DialogProps): DialogInstance | null {
       try {
-        // 创建前关闭已存在的弹窗
-        if (currentInstance) {
-          currentInstance.close();
-          currentInstance = null;
-        }
-
-        const mergedOptions = { ...options };
-
-        const context = getCurrentInstance()?.appContext;
+        // 不再关闭已存在的弹窗，支持嵌套
+        const mergedOptions = {
+          ...options
+        };
 
         // 创建容器
         const container = document.createElement('div');
@@ -45,16 +40,17 @@ const createDialog = () => {
         const dialogOptions = ref(mergedOptions || {});
 
         // 创建弹窗应用
-        const popupApp = createApp({
+        const dialogApp = createApp({
           setup() {
             // 关闭处理
             const handleClose = () => {
               visible.value = false;
               setTimeout(() => {
                 try {
-                  popupApp.unmount();
+                  dialogApp.unmount();
                   container.remove();
-                  currentInstance = null;
+                  // 从实例数组中移除关闭的实例
+                  instances = instances.filter(item => item.id !== instance.id);
                 } catch (error) {
                   handleError(error as Error, '弹窗关闭');
                 }
@@ -72,13 +68,11 @@ const createDialog = () => {
         });
 
         // 继承上下文
-        if (context) {
-          popupApp._context = Object.assign({}, context);
-        }
+        Object.assign(dialogApp._context, dialog._context);
 
         // 挂载
         try {
-          popupApp.mount(container);
+          dialogApp.mount(container);
         } catch (error) {
           handleError(error as Error, 'Vue实例挂载');
           container.remove();
@@ -91,9 +85,10 @@ const createDialog = () => {
             visible.value = false;
             setTimeout(() => {
               try {
-                popupApp.unmount();
+                dialogApp.unmount();
                 container.remove();
-                currentInstance = null;
+                // 从实例数组中移除关闭的实例
+                instances = instances.filter(item => item.id !== instance.id);
               } catch (error) {
                 handleError(error as Error, '实例关闭');
               }
@@ -106,7 +101,6 @@ const createDialog = () => {
           }
         };
 
-        currentInstance = instance;
         instances.push(instance);
         return instance;
       } catch (error) {

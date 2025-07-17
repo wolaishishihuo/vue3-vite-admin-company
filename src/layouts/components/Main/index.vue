@@ -4,7 +4,6 @@
       <router-view
         v-if="isRefresh"
         v-slot="{ Component, route }"
-        :style="{ minHeight: containerMinHeight }"
       >
         <transition appear :name="pageTransition" mode="out-in">
           <keep-alive :max="10" :exclude="keepAliveExclude">
@@ -24,7 +23,7 @@ import { useWorktabStore } from '@/store/modules/workTab';
 const { pageTransition, containerWidth, refresh } = storeToRefs(useSettingStore());
 const { keepAliveExclude } = storeToRefs(useWorktabStore());
 
-const { containerMinHeight } = useCommon();
+useCommon();
 
 const containerStyle = computed(() => {
   return {

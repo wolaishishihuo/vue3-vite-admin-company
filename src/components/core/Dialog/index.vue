@@ -1,14 +1,16 @@
 <template>
   <el-dialog v-bind="props" v-model="visible" :title="props.title" :fullscreen="fullscreen">
     <!-- 内容 -->
-    <slot>
-      <template v-if="typeof props.content === 'string'">
-        <p>{{ props.content }}</p>
-      </template>
-      <template v-if="typeof props.content === 'function'">
-        <component :is="props?.content?.()" />
-      </template>
-    </slot>
+    <ElConfigProvider :locale="zhCN">
+      <slot>
+        <template v-if="typeof props.content === 'string'">
+          <p>{{ props.content }}</p>
+        </template>
+        <template v-if="typeof props.content === 'function'">
+          <component :is="props?.content?.()" />
+        </template>
+      </slot>
+    </ElConfigProvider>
     <template v-if="props.footer" #footer>
       <slot name="footer">
         <template v-if="typeof props.footer === 'boolean'">
@@ -32,6 +34,8 @@
 <script lang="ts" setup>
 import type { VNode } from 'vue';
 import type { DialogProps } from './type';
+import { ElConfigProvider } from 'element-plus';
+import zhCN from 'element-plus/es/locale/lang/zh-cn';
 
 const props = withDefaults(defineProps<DialogProps>(), {
   closeOnClickModal: true,
