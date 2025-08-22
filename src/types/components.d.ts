@@ -8,12 +8,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    403: typeof import('./../components/core/ErrorMessage/403.vue')['default']
-    404: typeof import('./../components/core/ErrorMessage/404.vue')['default']
-    500: typeof import('./../components/core/ErrorMessage/500.vue')['default']
+    403: typeof import('./../components/custom/ErrorMessage/403.vue')['default']
+    404: typeof import('./../components/custom/ErrorMessage/404.vue')['default']
+    500: typeof import('./../components/custom/ErrorMessage/500.vue')['default']
     ArtMenuRight: typeof import('./../components/art-menu-right/index.vue')['default']
-    ArtTable: typeof import('./../components/core/Tables/art-table/index.vue')['default']
-    ArtTableHeader: typeof import('./../components/core/Tables/art-table-header/index.vue')['default']
+    ArtTable: typeof import('./../components/core/tables/art-table/index.vue')['default']
+    ArtTableHeader: typeof import('./../components/core/tables/art-table-header/index.vue')['default']
     Dialog: typeof import('./../components/core/Dialog/index.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAside: typeof import('element-plus/es')['ElAside']
