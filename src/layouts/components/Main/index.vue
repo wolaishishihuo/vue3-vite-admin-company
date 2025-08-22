@@ -1,17 +1,24 @@
 <template>
   <el-main>
-    <div class="layout-content" :style="containerStyle">
-      <router-view
-        v-if="isRefresh"
-        v-slot="{ Component, route }"
-      >
-        <transition appear :name="pageTransition" mode="out-in">
-          <keep-alive :max="10" :exclude="keepAliveExclude">
-            <component :is="createComponentWrapper(Component, route)" :key="route.fullPath" />
-          </keep-alive>
-        </transition>
-      </router-view>
-    </div>
+    <router-view
+      v-if="isRefresh"
+      v-slot="{ Component, route }"
+    >
+      <Transition appear :name="pageTransition" mode="out-in">
+        <keep-alive :max="10" :exclude="keepAliveExclude">
+          <component :is="createComponentWrapper(Component, route)" v-if="route.meta.isKeepAlive" :key="route.path" />
+        </keep-alive>
+      </Transition>
+      <!-- 非缓存路由动画 -->
+      <Transition :name="pageTransition" mode="out-in" appear>
+        <component
+          :is="Component"
+          v-if="!route.meta.isKeepAlive"
+          :key="route.path"
+          class="art-page-view"
+        />
+      </Transition>
+    </router-view>
   </el-main>
 </template>
 
@@ -20,16 +27,10 @@ import { useCommon } from '@/hooks/useCommon';
 import { useSettingStore } from '@/store/modules/setting';
 import { useWorktabStore } from '@/store/modules/workTab';
 
-const { pageTransition, containerWidth, refresh } = storeToRefs(useSettingStore());
+const { pageTransition, refresh } = storeToRefs(useSettingStore());
 const { keepAliveExclude } = storeToRefs(useWorktabStore());
 
 useCommon();
-
-const containerStyle = computed(() => {
-  return {
-    maxWidth: containerWidth.value
-  };
-});
 
 const isRefresh = ref(true);
 const reload = () => {
