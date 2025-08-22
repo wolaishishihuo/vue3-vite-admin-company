@@ -2,7 +2,7 @@ import type { RouteLocationNormalized } from 'vue-router';
 import { HOME_URL } from '@/config';
 import { useSettingStore } from '@/store/modules/setting';
 import { useWorktabStore } from '@/store/modules/workTab';
-import { getIframeRoutes } from '../menu';
+import { getIframeRoutes } from '../../router/utils/menu';
 import { isIframe } from './route';
 
 /**

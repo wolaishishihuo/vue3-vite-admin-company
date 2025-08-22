@@ -42,9 +42,9 @@
 <script setup lang="ts">
 import Main from '@/layouts/components/Main/index.vue';
 import SubMenu from '@/layouts/components/SubMenu/index.vue';
+import { filterHiddenMenus, processMenuItems } from '@/router/utils/menu';
 import { useAuthStore } from '@/store/modules/auth';
 import { useSettingStore } from '@/store/modules/setting';
-import { filterHiddenMenus, processMenuItems } from '@/utils/menu';
 import HeaderLeft from './components/Header/HeaderLeft.vue';
 import HeaderRight from './components/Header/HeaderRight.vue';
 import SettingPanel from './components/SettingPanel/index.vue';

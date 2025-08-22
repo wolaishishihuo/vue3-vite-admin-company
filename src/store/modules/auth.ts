@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { getFlatList } from '@/utils/array';
+import { getFlatList } from '@/utils/tools/array';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
